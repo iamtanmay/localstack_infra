@@ -1,19 +1,21 @@
-version: '2.1'
+version: "3.8"
+
 services:
   localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
     image: localstack/localstack
-    port:
+    ports:
       - '53:53'
       - '443:443'
-      - '4510-4520:4510-4520'
-      - '4566-4620:4566-4620'
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
     environment:
-      - SERVICES=serverless,cognito,rds,sqs,sns,cloudformation
-      - DEBUG=1
-      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=${DEBUG-}
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - SERVICES=serverless,cognito,rds,sqs,sns,cloudformation
+      - DATA_DIR=/var/lib/localstack/data
       - HOST_TMP_FOLDER=${TMPDIR}
       - LAMBDA_EXECUTOR=docker
     volumes:
-      - '${TMPDIR:-/tmp/localstack}:/tmp/localstack'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
