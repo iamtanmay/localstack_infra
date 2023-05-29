@@ -3,4 +3,4 @@ export DEBUG=0
 export LOCALSTACK_VOLUME_DIR='/home/iamtanmay/localstack'
 alias aws='aws --endpoint-url http://localhost:4566'
 cd $LOCALSTACK_VOLUME_DIR
-docker comppose up
+docker compose up
