@@ -1,7 +1,6 @@
 docker rm /localstack_main
 export DEBUG=0
 export LOCALSTACK_VOLUME_DIR='/home/iamtanmay/localstack'
-export LOCAL_STACK_API_KEY=
 export AWS_ACCESS_KEY_ID="test"
 export AWS_SECRET_ACCESS_KEY="test"
 export AWS_DEFAULT_REGION="eu-west-1"
