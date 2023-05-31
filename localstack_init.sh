@@ -1,4 +1,3 @@
-#!/bin/sh
 docker rm /localstack_main
 export DEBUG=0
 export LOCALSTACK_VOLUME_DIR='/home/iamtanmay/localstack'
