@@ -7,7 +7,7 @@ export AWS_DEFAULT_REGION="eu-west-1"
 
 #Add alias
 if ! grep -q "awslocal" ~/.bashrc ; then
-  echo $'alias awslocal=\'aws --endpoint-url http://localhost:4566\'' >> ~/.bashrc
+  echo $'alias awslocal=\'aws --endpoint-url https://localhost.localstack.cloud:4566\'' >> ~/.bashrc
 fi
 
 cd $LOCALSTACK_VOLUME_DIR
